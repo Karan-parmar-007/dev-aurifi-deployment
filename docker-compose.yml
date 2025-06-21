@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: ${DOCKERHUB_USERNAME}/aurifi-frontend:latest
+    image: ${DOCKERHUB_USERNAME}/dev-aurifi-frontend:latest
     ports:
       - "${FRONTEND_PORT:-3000}:3000"
     environment:
@@ -14,7 +14,7 @@ services:
       - "service=frontend"
 
   backend:
-    image: ${DOCKERHUB_USERNAME}/aurifi-backend:latest
+    image: ${DOCKERHUB_USERNAME}/dev-aurifi-backend:latest
     ports:
       - "${BACKEND_PORT:-5000}:5000"
     environment:

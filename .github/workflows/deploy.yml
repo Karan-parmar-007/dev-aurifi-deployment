@@ -32,8 +32,8 @@ jobs:
           docker compose down --remove-orphans
           
           echo "📥 Pulling latest images..."
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/aurifi-frontend:latest
-          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/aurifi-backend:latest
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/dev-aurifi-frontend:latest
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/dev-aurifi-backend:latest
           docker pull nginx:alpine
           
           echo "🔨 Starting services with updated configuration..."

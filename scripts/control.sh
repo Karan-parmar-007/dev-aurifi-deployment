@@ -48,7 +48,7 @@ case $ACTION in
             ./scripts/deploy.sh
         else
             echo "🔄 Updating $SERVICE..."
-            docker pull ${DOCKERHUB_USERNAME}/aurifi-${SERVICE}:latest
+            docker pull ${DOCKERHUB_USERNAME}/dev-aurifi-${SERVICE}:latest
             docker compose up -d --no-deps $SERVICE
             docker compose restart nginx
         fi

@@ -75,8 +75,8 @@ main() {
     docker volume prune -f
     
     print_step "3. Pulling latest images..."
-    docker pull ${DOCKERHUB_USERNAME}/aurifi-frontend:latest
-    docker pull ${DOCKERHUB_USERNAME}/aurifi-backend:latest
+    docker pull ${DOCKERHUB_USERNAME}/dev-aurifi-frontend:latest
+    docker pull ${DOCKERHUB_USERNAME}/dev-aurifi-backend:latest
     docker pull nginx:alpine
     
     print_step "4. Starting fresh services..."
@@ -111,10 +111,10 @@ main() {
     print_status "🎉 Full deployment completed successfully!"
     echo ""
     echo "🌐 Access Points:"
-    echo "   Frontend: http://165.22.214.208"
-    echo "   Backend API: http://165.22.214.208/api/v1"
-    echo "   Direct Frontend: http://165.22.214.208:3000"
-    echo "   Direct Backend: http://165.22.214.208:5000"
+    echo "   Frontend: http://139.59.26.29"
+    echo "   Backend API: http://139.59.26.29/api/v1"
+    echo "   Direct Frontend: http://139.59.26.29:3000"
+    echo "   Direct Backend: http://139.59.26.29:5000"
     echo ""
     echo "📅 Deployed at: $(date)"
 }
