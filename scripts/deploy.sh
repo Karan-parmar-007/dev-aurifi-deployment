@@ -108,6 +108,7 @@ main() {
     docker stats --no-stream
     echo ""
     
+    
     print_status "🎉 Full deployment completed successfully!"
     echo ""
     echo "🌐 Access Points:"
