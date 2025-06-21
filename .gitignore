@@ -1,0 +1,22 @@
+# Environment files
+.env
+
+# SSL certificates
+ssl/*.pem
+ssl/*.key
+ssl/*.crt
+
+# Cloned repositories
+frontend/
+backend/
+
+# Logs
+*.log
+logs/
+
+# Docker volumes
+mongodb_data/
+
+# OS files
+.DS_Store
+Thumbs.db

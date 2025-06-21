@@ -1,0 +1,51 @@
+name: Full Stack Deployment
+
+on:
+  push:
+    branches: [ master, main ]
+
+jobs:
+  full-deployment:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Full Stack Deployment
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        script: |
+          cd /opt/aurifi
+          
+          echo "🚀 Starting Full Stack Deployment..."
+          
+          # IMPORTANT: Update deployment files from git first!
+          echo "📦 Updating deployment configuration..."
+          git pull origin main || git pull origin master
+          
+          echo "🛑 Stopping all services..."
+          docker compose down --remove-orphans
+          
+          echo "📥 Pulling latest images..."
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/aurifi-frontend:latest
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/aurifi-backend:latest
+          docker pull nginx:alpine
+          
+          echo "🔨 Starting services with updated configuration..."
+          docker compose up -d
+          
+          echo "⏳ Waiting for services to initialize..."
+          sleep 20
+          
+          echo "📊 Service status:"
+          docker compose ps
+          
+          echo "🔍 Verifying nginx configuration..."
+          docker compose exec nginx nginx -T 2>/dev/null | grep client_max_body_size || echo "⚠️  client_max_body_size not found!"
+          
+          echo "✅ Deployment completed!"
