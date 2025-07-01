@@ -23,6 +23,8 @@ services:
       - MONGO_DBNAME=${DB_NAME}
       - SECRET_KEY=${SECRET_KEY}
       - CORS_ORIGINS=${CORS_ORIGINS}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_ASSISTANT_ID=${OPENAI_ASSISTANT_ID}
     volumes:
       - ./datasets:/app/datasets  # Add this line to persist datasets
     restart: unless-stopped
