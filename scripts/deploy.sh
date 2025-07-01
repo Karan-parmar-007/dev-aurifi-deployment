@@ -15,6 +15,7 @@ print_status() {
     echo -e "${GREEN}[INFO]${NC} $1"
 }
 
+
 print_warning() {
     echo -e "${YELLOW}[WARNING]${NC} $1"
 }
